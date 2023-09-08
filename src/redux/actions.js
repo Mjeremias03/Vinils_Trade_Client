@@ -15,6 +15,7 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const LOGOUT = "LOGOUT";
 export const POST_VINYL = "POST_VINYL";
+export const FAIL_REGISTER_USER ="FAIL_REGISTER_USER"
 const endpoint = "http://localhost:3001/";
 
 export const getAllVinyls = () => async (dispatch) => {
@@ -47,9 +48,10 @@ export const getVinylDetail = (id) => async (dispatch) => {
 };
 
 export const postRegisterUser = (x) => {
+  const newEndpoint = "http://localhost:3001/createUser"
   return async function (dispatch) {
     try {
-      const { data } = await axios.post(endpoint + x);
+      const { data } = await axios.post(newEndpoint, x);
       return dispatch({
         type: POST_REGISTER_USER,
         payload: data,
